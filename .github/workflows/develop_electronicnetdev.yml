@@ -32,12 +32,12 @@ jobs:
       - name: Create Build Directory
         run: mkdir _build
         
-      - name: Restore Packages
-        run: nuget restore SolutionElectronicNet/SolutionElectronicNet.sln
+      #- name: Restore Packages
+      #  run: nuget restore SolutionElectronicNet/SolutionElectronicNet.sln
 
       - name: Build Solution
         run: |
-             msbuild.exe SolutionElectronicNet.sln /p:platform="Any CPU" /p:configuration="Release"
+             msbuild.exe SolutionElectronicNet/SolutionElectronicNet.sln /p:platform="Any CPU" /p:configuration="Release"
 
 
       - name: Upload artifact
