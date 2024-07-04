@@ -33,7 +33,7 @@ jobs:
         run: mkdir _build
         
       - name: Restore Packages
-        run: nuget restore SolutionElectronicNet.sln
+        run: nuget restore SolutionElectronicNet/SolutionElectronicNet.sln
 
       - name: Build Solution
         run: |
