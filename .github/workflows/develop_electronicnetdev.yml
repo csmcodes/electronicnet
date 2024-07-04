@@ -23,17 +23,32 @@ jobs:
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v4
 
-      - name: Setup DotNet ${{ env.DOTNET_VERSION }} Environment
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+        
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.2
+      
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+        
+      - name: Create Build Directory
+        run: mkdir _build
+        
+      - name: Restore Packages
+        run: nuget restore SolutionElectronicNet.sln
 
-      - name: 'Resolve Project Dependencies Using Dotnet'
-        shell: pwsh
+      - name: Build Solution
         run: |
-          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          dotnet build --configuration Release --output ./output
-          popd
+             msbuild.exe SolutionElectronicNet.sln /p:platform="Any CPU" /p:configuration="Release"
+
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: SolutionElectronicNet
+          path: "./_build"
+
       
       - name: Login to Azure
         uses: azure/login@v1
