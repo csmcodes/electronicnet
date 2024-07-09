@@ -20,32 +20,33 @@ jobs:
       id-token: write #This is required for requesting the JWT
 
     steps:
+      - name: Run a multi-line script
+        run: |
+          echo AZURE_FUNCTIONAPP_PACKAGE_PATH
+          
       - name: 'Checkout GitHub Action'
         uses: actions/checkout@v4
 
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1            
       
-      - name: Navigate to Workspace
-        run: cd $GITHUB_WORKSPACE
+      #- name: Navigate to Workspace
+      #  run: cd $GITHUB_WORKSPACE
         
-      - name: Create Build Directory
-        run: mkdir _build
+      #- name: Create Build Directory
+      #  run: mkdir _build
         
       - name: Restore Packages
         run: nuget restore SolutionElectronicNet/SolutionElectronicNet.sln
 
       - name: Build Solution
-        run: |
-             msbuild.exe SolutionElectronicNet/SolutionElectronicNet.sln /p:platform="Any CPU" /p:configuration="Release"
-
+        run: msbuild SolutionElectronicNet/SolutionElectronicNet.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
           name: SolutionElectronicNet
-          path: "./_build"
-
+          path: bin\Release\Publish
       
       - name: Login to Azure
         uses: azure/login@v1
@@ -60,6 +61,7 @@ jobs:
         with:
           app-name: 'electronicnetdev'
           slot-name: 'Production'
-          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/_build'
+          package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/bin/Release/Publish'
+          #package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/_build'
           #package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
           
