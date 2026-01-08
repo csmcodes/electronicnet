@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElectronicNetApp", "ElectronicNetApp\ElectronicNetApp.csproj", "{501B0BF0-23EF-4543-8C59-5C239E7747B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicNetCore", "ElectronicNetCore\ElectronicNetCore.csproj", "{3A3AF7FA-32AA-48C7-90E0-3D6BA4F5C672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElectronicNetCloudStorage", "ElectronicNetCloudStorage\ElectronicNetCloudStorage.csproj", "{004AB632-BD69-4289-BE14-FD7B3533B3B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{501B0BF0-23EF-4543-8C59-5C239E7747B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{501B0BF0-23EF-4543-8C59-5C239E7747B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{501B0BF0-23EF-4543-8C59-5C239E7747B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A3AF7FA-32AA-48C7-90E0-3D6BA4F5C672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A3AF7FA-32AA-48C7-90E0-3D6BA4F5C672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A3AF7FA-32AA-48C7-90E0-3D6BA4F5C672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A3AF7FA-32AA-48C7-90E0-3D6BA4F5C672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{004AB632-BD69-4289-BE14-FD7B3533B3B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{004AB632-BD69-4289-BE14-FD7B3533B3B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{004AB632-BD69-4289-BE14-FD7B3533B3B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{004AB632-BD69-4289-BE14-FD7B3533B3B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
